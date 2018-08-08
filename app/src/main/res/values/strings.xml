@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Yetee</string>
+    <string name="title_activity_login">Login</string>
+    <string name="label_password">Password: </string>
+    <string name="label_username">Username: </string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="button_login">Log in</string>
+    <string name="button_signup">Sign up</string>
+    <string name="error_login">Incorrect login</string>
+    <string name="error_login_exists">Your email is already used.</string>
+    <string name="error_password">Incorrect password</string>
+    <string name="error_connectivity">Can\'t connect to service. Check your network or try again later.</string>
+    <string name="error_internal">The service is hit by an internal issue. Try again later.</string>
+    <string name="error_unexpected">Unexpected error. Try again.</string>
+</resources>

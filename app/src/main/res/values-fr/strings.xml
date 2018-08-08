@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Yetee</string>
+    <string name="title_activity_login">Connexion</string>
+    <string name="label_password">Mot de passe: </string>
+    <string name="label_username">Nom d\'utilisateur: </string>
+    <string name="hint_username">Nom d\'utilisateur</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="button_login">Connexion</string>
+    <string name="button_signup">Inscription</string>
+    <string name="error_login">Nom d\'utilisateur incorrect</string>
+    <string name="error_login_exists">Nom d\'utilisateur déjà utilisé.</string>
+    <string name="error_password">Mot de passe incorrect</string>
+    <string name="error_connectivity">Connexion au service impossible. Vérifiez votre connexion ou réessayez plus tard.</string>
+    <string name="error_internal">Le service est touché par une erreur interne. Réessayez plus tard.</string>
+    <string name="error_unexpected">Erreur inattendue. Réessayez.</string>
+</resources>
