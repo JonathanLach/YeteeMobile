@@ -1,5 +1,6 @@
 package com.android.yetee.yeteemobile.component;
 
+import com.android.yetee.yeteemobile.dataAccess.EventDAO;
 import com.android.yetee.yeteemobile.dataAccess.PointOfInterestDAO;
 import com.android.yetee.yeteemobile.dataAccess.UserDAO;
 import com.android.yetee.yeteemobile.module.ClientServiceModule;
@@ -14,4 +15,5 @@ import dagger.Component;
 public interface DaoComponents {
     UserDAO getUserDAO();
     PointOfInterestDAO getPointOfInterestDAO();
+    EventDAO getEventDAO();
 }

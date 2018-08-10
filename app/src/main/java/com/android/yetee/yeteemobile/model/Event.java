@@ -7,7 +7,7 @@ public class Event {
     private Long eventId;
     private String name;
     private String address;
-    private String ZIP;
+    private String zip;
     private String city;
     private Date eventDate;
     private BigDecimal ticketPrice;
@@ -40,11 +40,11 @@ public class Event {
     }
 
     public String getZIP() {
-        return ZIP;
+        return zip;
     }
 
-    public void setZIP(String ZIP) {
-        this.ZIP = ZIP;
+    public void setZIP(String zip) {
+        this.zip = zip;
     }
 
     public String getCity() {

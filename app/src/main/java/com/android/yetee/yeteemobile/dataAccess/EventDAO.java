@@ -1,0 +1,13 @@
+package com.android.yetee.yeteemobile.dataAccess;
+
+import com.android.yetee.yeteemobile.model.Event;
+import com.android.yetee.yeteemobile.util.AsyncCallbackTwoParam;
+import com.android.yetee.yeteemobile.util.ServiceResultState;
+
+import java.util.List;
+
+public interface EventDAO {
+    void getEventById(Long id, AsyncCallbackTwoParam<Event, ServiceResultState> callback);
+
+    void getAllEvents(AsyncCallbackTwoParam<List<Event>, ServiceResultState> callback);
+}

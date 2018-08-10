@@ -1,6 +1,8 @@
 package com.android.yetee.yeteemobile.module;
 
+import com.android.yetee.yeteemobile.activity.EventDetailsActivity;
 import com.android.yetee.yeteemobile.activity.EventMapActivity;
+import com.android.yetee.yeteemobile.activity.EventsListActivity;
 import com.android.yetee.yeteemobile.activity.LoginActivity;
 import com.android.yetee.yeteemobile.activity.MainActivity;
 import com.android.yetee.yeteemobile.annotation.ActivityScope;
@@ -18,4 +20,12 @@ public abstract class ActivityBindingsModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = EventMapActivityModule.class)
     abstract EventMapActivity eventMapActivityInjector();
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = EventsListActivityModule.class)
+    abstract EventsListActivity eventsListActivityInjector();
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = EventDetailsActivityModule.class)
+    abstract EventDetailsActivity eventDetailsActivityInjector();
 }

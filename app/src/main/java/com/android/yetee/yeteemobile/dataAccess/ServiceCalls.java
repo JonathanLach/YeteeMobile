@@ -1,5 +1,6 @@
 package com.android.yetee.yeteemobile.dataAccess;
 
+import com.android.yetee.yeteemobile.model.Event;
 import com.android.yetee.yeteemobile.model.PointOfInterest;
 import com.android.yetee.yeteemobile.model.User;
 
@@ -17,4 +18,10 @@ public interface ServiceCalls {
 
     @GET("pointsOfInterest")
     Call<List<PointOfInterest>> getAllPointsOfInterest();
+
+    @GET("events")
+    Call<List<Event>> getAllEvents();
+
+    @GET("events/id/{id}")
+    Call<Event> getEventById(@Path("id")Long id);
 }

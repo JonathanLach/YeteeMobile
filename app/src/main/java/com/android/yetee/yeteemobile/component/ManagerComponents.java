@@ -1,5 +1,6 @@
 package com.android.yetee.yeteemobile.component;
 
+import com.android.yetee.yeteemobile.business.EventManager;
 import com.android.yetee.yeteemobile.business.PointOfInterestManager;
 import com.android.yetee.yeteemobile.business.UserManager;
 import com.android.yetee.yeteemobile.module.AppModule;
@@ -14,4 +15,5 @@ import dagger.Component;
 public interface ManagerComponents {
     UserManager getUserManager();
     PointOfInterestManager getPointOfInterestManager();
+    EventManager getEventManager();
 }
