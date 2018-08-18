@@ -39,4 +39,20 @@ public class PointOfInterestDAOImpl implements PointOfInterestDAO {
             }
         });
     }
+
+    public void getPointsOfInterestFromEvent(Long eventId, AsyncCallbackTwoParam<List<PointOfInterest>, ServiceResultState> callback) {
+        Call<List<PointOfInterest>> call = service.getPointsOfInterestFromEvent(eventId);
+        call.enqueue(new Callback<List<PointOfInterest>>() {
+            @Override
+            public void onResponse(Call<List<PointOfInterest>> call, Response<List<PointOfInterest>> response) {
+                callback.apply(response.body(), ServiceResultState.OK);
+            }
+
+            @Override
+            public void onFailure(Call<List<PointOfInterest>> call, Throwable t) {
+                ServiceResultState serviceResultState = ConnectionChecker.checkConnectivity(t);
+                callback.apply(null, serviceResultState);
+            }
+        });
+    }
 }

@@ -1,12 +1,19 @@
 package com.android.yetee.yeteemobile.dataAccess.impl;
 
+import android.app.Service;
+import android.util.Log;
+
 import com.android.yetee.yeteemobile.dataAccess.ServiceCalls;
 import com.android.yetee.yeteemobile.dataAccess.UserDAO;
+import com.android.yetee.yeteemobile.model.Token;
+import com.android.yetee.yeteemobile.model.TokenRequest;
 import com.android.yetee.yeteemobile.model.User;
 import com.android.yetee.yeteemobile.util.AsyncCallbackOneParam;
+import com.android.yetee.yeteemobile.util.AsyncCallbackTwoParam;
 import com.android.yetee.yeteemobile.util.ConnectionChecker;
 import com.android.yetee.yeteemobile.util.ServiceResultState;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
 
 import javax.inject.Inject;
@@ -39,14 +46,82 @@ public class UserDAOImpl implements UserDAO {
                 } else if (response.code() == HttpURLConnection.HTTP_INTERNAL_ERROR) {
                     serviceResultState = ServiceResultState.SERVICE_INTERNAL_ERROR;
                 }
-                callback.apply(serviceResultState);
+                try {
+                    callback.apply(serviceResultState);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 ServiceResultState serviceResultState = ConnectionChecker.checkConnectivity(t);
-                callback.apply(serviceResultState);
+                try {
+                    callback.apply(serviceResultState);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
+
+    public void getToken(String username, String password, AsyncCallbackOneParam<String> callback) throws IOException {
+        Call<Token> call = service.getToken(new TokenRequest(username, password));
+        call.enqueue(new Callback<Token>() {
+            @Override
+            public void onResponse(Call<Token> call, Response<Token> response) {
+                try {
+                    callback.apply(response.body().getTokenValue());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Token> call, Throwable t) {
+                Log.e("ERROR", "ERROR");
+            }
+        });
+    }
+
+    @Override
+    public void register(User user, AsyncCallbackOneParam<ServiceResultState> callback) {
+        Call<Void> call = service.register(user);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                ServiceResultState serviceResultState = ServiceResultState.UNKNOWN_ERROR;
+                if (response.code() == HttpURLConnection.HTTP_CREATED) {
+                    serviceResultState = ServiceResultState.OK;
+                }
+                try {
+                    callback.apply(serviceResultState);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("ERROR", "ERROR");
+            }
+        });
+    }
+
+    @Override
+    public void getProfile(String username, AsyncCallbackTwoParam<User, ServiceResultState> callback) {
+        Call<User> call = service.getUserByUsername(username);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                callback.apply(response.body(), ServiceResultState.OK);
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                callback.apply(null, ConnectionChecker.checkConnectivity(t));
+            }
+        });
+    }
+
 }

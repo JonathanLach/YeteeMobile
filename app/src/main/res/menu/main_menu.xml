@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+
+    <item
+        android:id="@+id/profileMenu"
+        android:title="Profile"
+        app:showAsAction="always"
+        android:icon="@drawable/profile_icon"/>
+
+    <item
+        android:id="@+id/subscriptionsMenu"
+        android:title="Subscriptions"
+        app:showAsAction="always"
+        android:icon="@drawable/subscription_icon"/>
+
+    <item
+        android:id="@+id/eventsMapMenu"
+        android:title="Map"
+        app:showAsAction="always"
+        android:icon="@drawable/map_icon" />
+
+    <item
+        android:title="Main Content"
+        app:showAsAction="always"
+        android:icon="@drawable/hamburger_icon">
+        <menu>
+            <item
+                android:id="@+id/eventsMapMenuItem"
+                android:title="Events Map"
+
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/eventsListMenuItem"
+                android:title="Events List"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/profileMenuItem"
+                android:title="Profile"
+                app:showAsAction="always"/>
+            <item
+                android:id="@+id/subscriptionsMenuItem"
+                android:title="Subscribtions"
+                app:showAsAction="always"/>
+        </menu>
+    </item>
+</menu>

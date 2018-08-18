@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface PointOfInterestDAO {
     void getAllPointsOfInterest(AsyncCallbackTwoParam<List<PointOfInterest>, ServiceResultState> callback);
+    void getPointsOfInterestFromEvent(Long eventId, AsyncCallbackTwoParam<List<PointOfInterest>, ServiceResultState> callback);
 }

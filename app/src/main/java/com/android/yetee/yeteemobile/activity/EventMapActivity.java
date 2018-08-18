@@ -3,6 +3,7 @@ package com.android.yetee.yeteemobile.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -11,7 +12,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.contract.EventMapContract;
@@ -65,6 +69,11 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_map);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Yetee");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -85,6 +94,7 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
         mLocationRequest.setInterval(30 * 1000);
         mLocationRequest.setFastestInterval(5 * 1000);
         startLocationUpdates();
+
     }
 
     @Override
@@ -132,6 +142,8 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
         }
         getLocationPermission();
         googleMap.getUiSettings().setAllGesturesEnabled(true);
+        googleMap.getUiSettings().setZoomGesturesEnabled(true);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
         try {
             if (locationPermissionGranted) {
                 googleMap.setMyLocationEnabled(true);
@@ -159,12 +171,15 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
                             lastKnownLocation = (Location) task.getResult();
-                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(lastKnownLocation.getLatitude(),
-                                            lastKnownLocation.getLongitude()), 12));
+                            if(lastKnownLocation != null) {
+                                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(lastKnownLocation.getLatitude(),
+                                                lastKnownLocation.getLongitude()), 12));
+                            }
+                            else {
+                                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(50.525707, 4.062102), 12));
+                            }
                         } else {
-                            Log.d("test", "Current location is null. Using defaults.");
-                            Log.e("test", "Exception: %s", task.getException());
                             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12));
                             googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                         }

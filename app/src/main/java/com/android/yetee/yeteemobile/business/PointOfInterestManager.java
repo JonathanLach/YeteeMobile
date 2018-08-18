@@ -23,4 +23,8 @@ public class PointOfInterestManager {
         pointOfInterestDAO.getAllPointsOfInterest(callback);
     }
 
+    public void getPointsOfInterestFromEvent(Long eventId, AsyncCallbackTwoParam<List<PointOfInterest>, ServiceResultState> callback) {
+        pointOfInterestDAO.getPointsOfInterestFromEvent(eventId, callback);
+    }
+
 }

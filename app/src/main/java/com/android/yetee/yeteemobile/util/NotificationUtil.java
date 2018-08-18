@@ -3,6 +3,8 @@ package com.android.yetee.yeteemobile.util;
 import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.contract.MainContract;
 
+import java.util.List;
+
 public class NotificationUtil {
     public static void notifyLoginErrorDialog(MainContract.View view, ServiceResultState serviceResultState) {
         if (serviceResultState == ServiceResultState.NOT_FOUND) {
@@ -12,6 +14,14 @@ public class NotificationUtil {
         } else {
             notifyCommonErrorDialog(view, serviceResultState);
         }
+    }
+
+    public static void notifyRegisterErrorDialog(MainContract.View view, ServiceResultState serviceResultState, List<VerificationErrorCodes> verificationErrorCodes) {
+        String message = "";
+        for(VerificationErrorCodes errorCode : verificationErrorCodes) {
+            message += errorCode.toString() + "\n";
+        }
+        view.sendErrorDialog(message);
     }
 
     public static void notifyRegisterErrorDialog(MainContract.View view, ServiceResultState serviceResultState) {

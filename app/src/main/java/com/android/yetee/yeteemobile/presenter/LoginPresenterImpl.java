@@ -1,6 +1,11 @@
 package com.android.yetee.yeteemobile.presenter;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.android.yetee.yeteemobile.app.YeteeApplication;
 import com.android.yetee.yeteemobile.business.UserManager;
+import com.android.yetee.yeteemobile.constants.SharedPreferencesConstants;
 import com.android.yetee.yeteemobile.contract.LoginContract;
 import com.android.yetee.yeteemobile.util.AsyncCallbackOneParam;
 import com.android.yetee.yeteemobile.util.NotificationUtil;
@@ -23,10 +28,18 @@ public class LoginPresenterImpl implements LoginContract.Presenter {
     }
 
     @Override
-    public void login() {
+    public void login(SharedPreferences preferences) {
+        AsyncCallbackOneParam<String> callbackToken = (token) -> {
+            preferences.edit()
+                    .putString(SharedPreferencesConstants.USER_TOKEN, token)
+                    .putBoolean(SharedPreferencesConstants.USER_IS_LOGGED, true)
+                    .putString(SharedPreferencesConstants.USER_USERNAME, loginViewHolder.getLogin())
+                    .apply();
+            view.setEventMapView();
+        };
         AsyncCallbackOneParam<ServiceResultState> callbackAction = (statusCode) -> {
             if (statusCode == ServiceResultState.OK) {
-                view.setEventMapView();
+                userManager.getToken(loginViewHolder.getLogin(), loginViewHolder.getPassword(), callbackToken);
             }
             else {
                 NotificationUtil.notifyLoginErrorDialog(view, statusCode);

@@ -7,7 +7,6 @@ import com.android.yetee.yeteemobile.R;
 import butterknife.BindView;
 
 public class EventDetailsViewHolder {
-
     @BindView(R.id.eventDetailsName)
     TextView eventName;
 

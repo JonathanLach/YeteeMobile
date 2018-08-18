@@ -32,7 +32,9 @@ public class EventsListPresenterImpl implements EventsListContract.Presenter {
                 NotificationUtil.notifyCommonErrorDialog(view, statusCode);
             }
             else {
-                viewHolder.setList(events);
+                if(events != null) {
+                    viewHolder.setList(events);
+                }
             }
         };
         eventManager.getAllEvents(callback);
