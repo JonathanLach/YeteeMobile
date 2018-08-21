@@ -27,7 +27,6 @@ public class EventSubscribtionsActivity extends MainActivity implements EventSub
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationIcon(android.R.drawable.ic_dialog_alert);
         getSupportActionBar().setTitle(getString(R.string.title_subscribtion));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewHolder.setContext(getApplicationContext());

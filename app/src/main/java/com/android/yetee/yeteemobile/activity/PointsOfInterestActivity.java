@@ -61,7 +61,6 @@ public class PointsOfInterestActivity extends MainActivity implements PointsOfIn
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationIcon(android.R.drawable.ic_dialog_alert);
         getSupportActionBar().setTitle(getString(R.string.title_pointsOfInterest));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

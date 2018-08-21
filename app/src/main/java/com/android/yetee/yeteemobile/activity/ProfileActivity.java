@@ -28,7 +28,6 @@ public class ProfileActivity extends MainActivity implements ProfileContract.Vie
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationIcon(android.R.drawable.ic_dialog_alert);
         getSupportActionBar().setTitle(getString(R.string.title_profile));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         presenter.getProfile(getApplicationContext());
