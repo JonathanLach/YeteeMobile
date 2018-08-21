@@ -1,10 +1,13 @@
 package com.android.yetee.yeteemobile.module;
 
-import com.android.yetee.yeteemobile.activity.EventDetailsActivity;
 import com.android.yetee.yeteemobile.activity.EventMapActivity;
+import com.android.yetee.yeteemobile.activity.EventSubscribtionsActivity;
 import com.android.yetee.yeteemobile.activity.EventsListActivity;
 import com.android.yetee.yeteemobile.activity.LoginActivity;
 import com.android.yetee.yeteemobile.activity.MainActivity;
+import com.android.yetee.yeteemobile.activity.PointsOfInterestActivity;
+import com.android.yetee.yeteemobile.activity.ProfileActivity;
+import com.android.yetee.yeteemobile.activity.RegisterActivity;
 import com.android.yetee.yeteemobile.annotation.ActivityScope;
 
 import dagger.Module;
@@ -26,6 +29,18 @@ public abstract class ActivityBindingsModule {
     abstract EventsListActivity eventsListActivityInjector();
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = EventDetailsActivityModule.class)
-    abstract EventDetailsActivity eventDetailsActivityInjector();
+    @ContributesAndroidInjector(modules = RegisterActivityModule.class)
+    abstract RegisterActivity registerActivityInjector();
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = EventSubscribtionActivityModule.class)
+    abstract EventSubscribtionsActivity eventSubscribtionsActivityInjector();
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = ProfileActivityModule.class)
+    abstract ProfileActivity profileActivityInjector();
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = PointsOfInterestActivityModule.class)
+    abstract PointsOfInterestActivity pointsOfInterestActivityInjector();
 }

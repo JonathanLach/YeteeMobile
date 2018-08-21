@@ -13,7 +13,16 @@ public class Event {
     private BigDecimal ticketPrice;
     private String description;
     private Company company;
+    private Location location;
     private EventCategory eventCategory;
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public Long getEventId() {
         return eventId;

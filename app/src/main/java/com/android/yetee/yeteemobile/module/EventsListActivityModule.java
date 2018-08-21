@@ -1,7 +1,7 @@
 package com.android.yetee.yeteemobile.module;
 
-import com.android.yetee.yeteemobile.activity.EventsListActivity;
 import com.android.yetee.yeteemobile.contract.EventsListContract;
+import com.android.yetee.yeteemobile.fragment.EventsListFragment;
 import com.android.yetee.yeteemobile.presenter.EventsListPresenterImpl;
 import com.android.yetee.yeteemobile.viewHolder.EventsListViewHolder;
 
@@ -14,7 +14,7 @@ import static com.android.yetee.yeteemobile.module.BaseActivityModule.getManager
 @Module
 public abstract class EventsListActivityModule {
     @Binds
-    public abstract EventsListContract.View view(EventsListActivity eventsListActivity);
+    public abstract EventsListContract.View view(EventsListFragment eventsListFragment);
 
     @Provides
     static EventsListViewHolder provideLoginViewHolder(EventsListContract.View view) {

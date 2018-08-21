@@ -1,7 +1,6 @@
 package com.android.yetee.yeteemobile.viewHolder;
 
 import android.content.Context;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -9,8 +8,6 @@ import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.adapter.EventAdapter;
 import com.android.yetee.yeteemobile.model.Event;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import butterknife.BindView;

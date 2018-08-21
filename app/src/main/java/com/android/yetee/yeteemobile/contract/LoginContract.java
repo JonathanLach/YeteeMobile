@@ -1,21 +1,24 @@
 package com.android.yetee.yeteemobile.contract;
 
-import com.android.yetee.yeteemobile.R;
-import com.android.yetee.yeteemobile.viewHolder.LoginViewHolder;
+import android.content.SharedPreferences;
 
-import butterknife.OnClick;
+import com.android.yetee.yeteemobile.viewHolder.LoginViewHolder;
 
 public interface LoginContract {
     interface View extends MainContract.View {
         void login();
+        void onClickRegisterButton();
+
+        void setRegisterView();
 
         void setEventMapView();
-
         LoginViewHolder getLoginViewHolder();
     }
 
     interface Presenter extends MainContract.Presenter {
 
-        void login();
+        void setRegisterView();
+
+        void login(SharedPreferences preferences);
     }
 }

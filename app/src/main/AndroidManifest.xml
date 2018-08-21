@@ -13,20 +13,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service
+            android:name=".business.NotificationsManager"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/subscription_icon"/>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyArSQiBoYm_HLH-VoI2wM4BXbtoyOCbLbg" />
 
-        <activity android:name=".activity.EventsListActivity">
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.EventSubscribtionsActivity" />
         <activity android:name=".activity.EventMapActivity" />
-        <activity android:name=".activity.EventDetailsActivity"></activity>
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.EventsListActivity" />
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.PointsOfInterestActivity"></activity>
     </application>
 
 </manifest>

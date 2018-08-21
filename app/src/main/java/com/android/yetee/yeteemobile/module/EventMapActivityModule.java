@@ -16,6 +16,6 @@ public abstract class EventMapActivityModule extends BaseActivityModule {
 
     @Provides
     static EventMapContract.Presenter provideEventMapPresenter(EventMapContract.View view) {
-        return new EventMapPresenterImpl(view, getManagerComponents().getPointOfInterestManager());
+        return new EventMapPresenterImpl(view, getManagerComponents().getEventManager());
     }
 }

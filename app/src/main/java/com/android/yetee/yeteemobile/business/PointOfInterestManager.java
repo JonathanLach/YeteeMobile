@@ -2,7 +2,6 @@ package com.android.yetee.yeteemobile.business;
 
 import com.android.yetee.yeteemobile.dataAccess.PointOfInterestDAO;
 import com.android.yetee.yeteemobile.model.PointOfInterest;
-import com.android.yetee.yeteemobile.util.AsyncCallbackOneParam;
 import com.android.yetee.yeteemobile.util.AsyncCallbackTwoParam;
 import com.android.yetee.yeteemobile.util.ServiceResultState;
 
@@ -21,6 +20,10 @@ public class PointOfInterestManager {
 
     public void getAllPointsOfInterest(AsyncCallbackTwoParam<List<PointOfInterest>, ServiceResultState> callback) {
         pointOfInterestDAO.getAllPointsOfInterest(callback);
+    }
+
+    public void getPointsOfInterestFromEvent(Long eventId, AsyncCallbackTwoParam<List<PointOfInterest>, ServiceResultState> callback) {
+        pointOfInterestDAO.getPointsOfInterestFromEvent(eventId, callback);
     }
 
 }

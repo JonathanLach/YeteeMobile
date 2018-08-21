@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+
+    <item
+        android:id="@+id/profileMenu"
+        android:title="@string/title_profile"
+        app:showAsAction="always"
+        android:icon="@drawable/profile_icon"/>
+
+    <item
+        android:id="@+id/eventsListMenu"
+        android:title="@string/title_events_list"
+        app:showAsAction="always"
+        android:icon="@drawable/subscription_icon"/>
+
+    <item
+        android:id="@+id/eventsMapMenu"
+        android:title="@string/title_event_map"
+        app:showAsAction="always"
+        android:icon="@drawable/map_icon" />
+
+    <item
+        android:title="@string/title_main_content"
+        app:showAsAction="always"
+        android:icon="@drawable/hamburger_icon">
+        <menu>
+            <item
+                android:id="@+id/eventsMapMenuItem"
+                android:title="@string/title_event_map"
+
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/eventsListMenuItem"
+                android:title="@string/title_events_list"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/profileMenuItem"
+                android:title="@string/title_profile"
+                app:showAsAction="always"/>
+            <item
+                android:id="@+id/subscriptionsMenuItem"
+                android:title="@string/title_subscribtion"
+                app:showAsAction="always"/>
+        </menu>
+    </item>
+</menu>

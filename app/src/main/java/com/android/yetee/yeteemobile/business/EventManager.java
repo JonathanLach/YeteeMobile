@@ -2,6 +2,7 @@ package com.android.yetee.yeteemobile.business;
 
 import com.android.yetee.yeteemobile.dataAccess.EventDAO;
 import com.android.yetee.yeteemobile.model.Event;
+import com.android.yetee.yeteemobile.model.IdFilter;
 import com.android.yetee.yeteemobile.util.AsyncCallbackTwoParam;
 import com.android.yetee.yeteemobile.util.ServiceResultState;
 
@@ -24,5 +25,9 @@ public class EventManager {
 
     public void getEventById(Long id, AsyncCallbackTwoParam<Event, ServiceResultState> callback) {
         eventDAO.getEventById(id, callback);
+    }
+
+    public void getSubscribtions(List<IdFilter> eventsId, AsyncCallbackTwoParam<List<Event>, ServiceResultState> callback) {
+        eventDAO.getSubscribtions(eventsId, callback);
     }
 }
