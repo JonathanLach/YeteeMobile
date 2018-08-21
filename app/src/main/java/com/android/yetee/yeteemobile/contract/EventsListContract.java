@@ -10,7 +10,7 @@ public interface EventsListContract {
         EventsListViewHolder getViewHolder();
     }
 
-    interface Presenter extends MainContract.Presenter {
+    interface Presenter {
         void setDetailsView(int position);
 
         void getAllEvents();

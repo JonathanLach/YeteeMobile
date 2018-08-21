@@ -7,7 +7,7 @@ public interface EventSubscribtionsContract {
         EventSubscribtionsViewHolder getViewHolder();
     }
 
-    interface Presenter extends MainContract.Presenter{
+    interface Presenter {
         void getSubscribtions();
     }
 }

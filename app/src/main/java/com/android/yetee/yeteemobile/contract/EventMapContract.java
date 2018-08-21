@@ -6,7 +6,7 @@ public interface EventMapContract {
         void addMarkerMap(double latitude, double longitude, String title);
     }
 
-    interface Presenter extends MainContract.Presenter {
+    interface Presenter {
         void getEventLocations();
     }
 }

@@ -6,7 +6,7 @@ public interface PointsOfInterestContract {
         void addMarkerMap(double latitude, double longitude, String title);
     }
 
-    interface Presenter extends MainContract.Presenter {
+    interface Presenter {
         void getPointsOfInterestFromEvent(Long eventid);
     }
 }

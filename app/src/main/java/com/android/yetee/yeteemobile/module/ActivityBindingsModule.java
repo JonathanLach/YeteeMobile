@@ -16,6 +16,7 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module(includes = AndroidInjectionModule.class)
 public abstract class ActivityBindingsModule {
+
     @ActivityScope
     @ContributesAndroidInjector(modules = LoginActivityModule.class)
     abstract LoginActivity loginActivityInjector();

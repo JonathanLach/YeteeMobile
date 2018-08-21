@@ -15,7 +15,7 @@ public interface LoginContract {
         LoginViewHolder getLoginViewHolder();
     }
 
-    interface Presenter extends MainContract.Presenter {
+    interface Presenter {
 
         void setRegisterView();
 

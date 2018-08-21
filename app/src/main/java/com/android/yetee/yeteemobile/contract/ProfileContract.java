@@ -11,7 +11,7 @@ public interface ProfileContract {
         ProfileViewHolder getViewHolder();
     }
 
-    interface Presenter extends MainContract.Presenter {
+    interface Presenter {
         void getProfile(Context context);
     }
 }
