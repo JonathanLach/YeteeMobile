@@ -10,17 +10,23 @@ import android.widget.Toast;
 
 import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.contract.MainContract;
+import com.android.yetee.yeteemobile.presenter.MainPresenterImpl;
+
+import javax.inject.Inject;
 
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class MainActivity extends DaggerAppCompatActivity implements MainContract.View {
+public class MainActivity extends DaggerAppCompatActivity implements MainContract.ViewHandler {
 
     private String ERROR_DEBUG_TAG = "DEBUG INFO";
     private DrawerLayout mDrawerLayout;
 
+    private MainContract.Presenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter = new MainPresenterImpl(this);
     }
 
     @Override
@@ -53,20 +59,40 @@ public class MainActivity extends DaggerAppCompatActivity implements MainContrac
                 return true;
             case R.id.eventsListMenu:
             case R.id.eventsListMenuItem:
-                startActivity(new Intent(this, EventsListActivity.class));
+                presenter.setEventsListView();
                 return true;
             case R.id.eventsMapMenuItem:
             case R.id.eventsMapMenu:
-                startActivity(new Intent(this, EventMapActivity.class));
+                presenter.setEventsMapView();
                 return true;
             case R.id.profileMenu:
             case R.id.profileMenuItem:
-                startActivity(new Intent(this, ProfileActivity.class));
+                presenter.setProfileView();
                 return true;
             case R.id.subscriptionsMenuItem:
-                startActivity(new Intent(this, EventSubscribtionsActivity.class));
+                presenter.setSubscribtionView();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void setEventsListView() {
+        startActivity(new Intent(this, EventsListActivity.class));
+    }
+
+    @Override
+    public void setEventsMapView() {
+        startActivity(new Intent(this, EventMapActivity.class));
+    }
+
+    @Override
+    public void setEventSubscribtionView() {
+        startActivity(new Intent(this, EventSubscribtionsActivity.class));
+    }
+
+    @Override
+    public void setProfileView() {
+        startActivity(new Intent(this, ProfileActivity.class));
     }
 }

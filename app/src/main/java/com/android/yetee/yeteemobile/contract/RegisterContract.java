@@ -13,7 +13,7 @@ public interface RegisterContract {
         void setLoginView();
     }
 
-    interface Presenter extends MainContract.Presenter {
+    interface Presenter {
         void register();
     }
 }

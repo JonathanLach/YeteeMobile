@@ -9,6 +9,16 @@ public interface MainContract {
     }
 
     interface Presenter {
+        void setEventsListView();
+        void setEventsMapView();
+        void setProfileView();
+        void setSubscribtionView();
+    }
 
+    interface ViewHandler extends View {
+        void setEventsListView();
+        void setEventsMapView();
+        void setEventSubscribtionView();
+        void setProfileView();
     }
 }

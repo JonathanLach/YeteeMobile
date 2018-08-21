@@ -15,7 +15,7 @@ public interface EventDetailsContract {
         EventDetailsViewHolder getViewHolder();
     }
 
-    interface Presenter extends MainContract.Presenter {
+    interface Presenter {
         void getEventDetails(Long id);
 
         void subscribeToEvent(Long id, Context context);
