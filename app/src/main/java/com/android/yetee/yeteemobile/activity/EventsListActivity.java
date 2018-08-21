@@ -23,7 +23,6 @@ public class EventsListActivity extends MainActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.title_events_list));
-        toolbar.setNavigationIcon(android.R.drawable.ic_dialog_alert);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         showEventsListFragment();
         if(getResources().getBoolean(R.bool.isTablet) || getResources().getBoolean(R.bool.isLandscape)) {

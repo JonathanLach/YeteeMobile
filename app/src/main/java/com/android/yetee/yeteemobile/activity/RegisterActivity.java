@@ -32,7 +32,6 @@ public class RegisterActivity extends MainActivity implements RegisterContract.V
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationIcon(android.R.drawable.ic_dialog_alert);
         getSupportActionBar().setTitle(getString(R.string.title_register));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -56,15 +55,13 @@ public class RegisterActivity extends MainActivity implements RegisterContract.V
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
+        onBackPressed();
         return true;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        return false;
+        getMenuInflater().inflate(R.menu.register_menu, menu);
+        return true;
     }
 }

@@ -4,6 +4,10 @@ import android.widget.TextView;
 
 import com.android.yetee.yeteemobile.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import butterknife.BindView;
 
 public class EventDetailsViewHolder {
@@ -12,6 +16,9 @@ public class EventDetailsViewHolder {
 
     @BindView(R.id.eventDetailsCategory)
     TextView eventCategory;
+
+    @BindView(R.id.eventDetailsDate)
+    TextView eventDate;
 
     @BindView(R.id.eventDetailsDescription)
     TextView eventDescription;
@@ -46,6 +53,11 @@ public class EventDetailsViewHolder {
     public void setEventTicketPrice(String ticketPrice) {
         eventTicketPrice.setText(ticketPrice);
 
+    }
+
+    public void setEventDate(Date date) {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        eventDate.setText(df.format(date));
     }
 
     public void setEventCompany(String company) {

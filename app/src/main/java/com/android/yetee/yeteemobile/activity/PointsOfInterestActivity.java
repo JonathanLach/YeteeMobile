@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.android.yetee.yeteemobile.R;
+import com.android.yetee.yeteemobile.constants.GeoLocationConstants;
 import com.android.yetee.yeteemobile.constants.IntentConstants;
 import com.android.yetee.yeteemobile.contract.PointsOfInterestContract;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -161,13 +162,13 @@ public class PointsOfInterestActivity extends MainActivity implements PointsOfIn
                         if(lastKnownLocation != null) {
                             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(lastKnownLocation.getLatitude(),
-                                            lastKnownLocation.getLongitude()), 12));
+                                            lastKnownLocation.getLongitude()), GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
                         }
                         else {
-                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(50.525707, 4.062102), 12));
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(GeoLocationConstants.DEFAULT_LATITUDE, GeoLocationConstants.DEFAULT_LONGITUDE), GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
                         }
                     } else {
-                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12));
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
                         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });

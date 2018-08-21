@@ -1,5 +1,6 @@
 package com.android.yetee.yeteemobile.business;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
@@ -7,23 +8,22 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.android.yetee.yeteemobile.R;
+import com.android.yetee.yeteemobile.constants.NotificationConstants;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class NotificationsManager extends FirebaseMessagingService {
 
-    private static final String TAG = "NotificationsManager";
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
+        Log.d(NotificationConstants.TAG, "From: " + remoteMessage.getFrom());
 
         if (remoteMessage.getData().size() > 0) {
-            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+            Log.d(NotificationConstants.TAG, "Message data payload: " + remoteMessage.getData());
         }
 
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d(NotificationConstants.TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
         sendNotification(remoteMessage);
 
@@ -46,11 +46,10 @@ public class NotificationsManager extends FirebaseMessagingService {
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "1";
-            String description = "desc";
+            CharSequence name = NotificationConstants.CHANNEL_NAME;
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("1", name, importance);
-            channel.setDescription(description);
+            NotificationChannel channel = new NotificationChannel(NotificationConstants.CHANNEL_ID, name, importance);
+            channel.setDescription(NotificationConstants.DESCRIPTION);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }

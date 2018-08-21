@@ -10,6 +10,7 @@
     <string name="label_password">Password: </string>
     <string name="label_username">Username: </string>
     <string name="label_eventName">Name: </string>
+    <string name="label_eventDate">Date: </string>
     <string name="label_eventCategory">Category: </string>
     <string name="label_eventCompany">Company: </string>
     <string name="label_eventDescription">Description: </string>

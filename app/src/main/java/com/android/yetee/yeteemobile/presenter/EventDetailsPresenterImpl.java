@@ -51,6 +51,7 @@ public class EventDetailsPresenterImpl implements EventDetailsContract.Presenter
                     viewHolder.setEventCompany(event.getCompany().getName());
                     viewHolder.setEventDescription(event.getDescription());
                     viewHolder.setEventName(event.getName());
+                    viewHolder.setEventDate(event.getEventDate());
                     viewHolder.setEventTicketPrice(String.valueOf(event.getTicketPrice()));
                 }
             };
@@ -69,5 +70,10 @@ public class EventDetailsPresenterImpl implements EventDetailsContract.Presenter
         else {
             view.sendErrorDialog(view.getStringValue(R.string.error_already_sub));
         }
+    }
+
+    @Override
+    public void setPointsOfInterestView() {
+        view.setPointsOfInterestView();
     }
 }

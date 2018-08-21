@@ -14,6 +14,8 @@ import com.android.yetee.yeteemobile.viewHolder.EventsListViewHolder;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class EventAdapter extends ArrayAdapter<Event> {
@@ -35,12 +37,12 @@ public class EventAdapter extends ArrayAdapter<Event> {
         } else {
             viewHolder = (EventsListViewHolder)convertView.getTag();
         }
-
-        viewHolder.setEventId((TextView)convertView.findViewById(R.id.eventId));
         viewHolder.setEventName((TextView)convertView.findViewById(R.id.eventName));
+        viewHolder.setEventDate((TextView)convertView.findViewById(R.id.eventDate));
         viewHolder.setEventCategory((TextView)convertView.findViewById(R.id.eventCategory));
-        viewHolder.getEventId().setText(item.getEventId().toString());
         viewHolder.getEventName().setText(item.getName());
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        viewHolder.getEventDate().setText(df.format(item.getEventDate()));
         viewHolder.getEventCategory().setText(item.getEventCategory().getName());
 
         return convertView;

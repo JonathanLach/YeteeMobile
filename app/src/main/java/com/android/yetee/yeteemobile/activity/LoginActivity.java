@@ -42,10 +42,7 @@ public class LoginActivity extends MainActivity implements LoginContract.View {
         ButterKnife.bind(loginViewHolder, this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationIcon(android.R.drawable.ic_dialog_alert);
         getSupportActionBar().setTitle(getString(R.string.title_login));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

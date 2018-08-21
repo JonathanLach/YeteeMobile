@@ -80,10 +80,16 @@ public class EventDetailsFragment extends MainFragment implements EventDetailsCo
         presenter.subscribeToEvent(getArguments().getLong(IntentConstants.EVENT_ID), getContext());
     }
 
+    @OnClick(R.id.seePointsOfInterest)
     @Override
-    public void setPointsOfInterest() {
+    public void onClickPointsOfInterestButton() {
+        presenter.setPointsOfInterestView();
+    }
+
+    @Override
+    public void setPointsOfInterestView() {
         Intent intent = new Intent(getContext(), PointsOfInterestActivity.class);
-        intent.putExtra("EVENT_ID", getArguments().getLong(IntentConstants.EVENT_ID));
+        intent.putExtra(IntentConstants.EVENT_ID, getArguments().getLong(IntentConstants.EVENT_ID));
         startActivity(intent);
     }
 
