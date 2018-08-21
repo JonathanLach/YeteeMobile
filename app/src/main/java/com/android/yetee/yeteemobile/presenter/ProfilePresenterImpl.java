@@ -34,6 +34,7 @@ public class ProfilePresenterImpl implements ProfileContract.Presenter {
               viewHolder.setAddress(user.getAddress());
               viewHolder.setCity(user.getCity());
               viewHolder.setFirstName(user.getFirstName());
+              viewHolder.setUsername(user.getLogin());
               viewHolder.setIban(user.getIbanAccount());
               viewHolder.setLastName(user.getLastName());
               viewHolder.setZip(user.getZip());

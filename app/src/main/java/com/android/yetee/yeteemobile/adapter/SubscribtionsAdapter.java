@@ -5,15 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.model.Event;
 import com.android.yetee.yeteemobile.viewHolder.EventSubscribtionsViewHolder;
-import com.android.yetee.yeteemobile.viewHolder.EventsListViewHolder;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -37,9 +32,9 @@ public class SubscribtionsAdapter extends ArrayAdapter<Event> {
             viewHolder = (EventSubscribtionsViewHolder)convertView.getTag();
         }
 
-        viewHolder.setSubscribtionId((TextView)convertView.findViewById(R.id.subscritionId));
-        viewHolder.setSubscribtionName((TextView)convertView.findViewById(R.id.subscritionName));
-        viewHolder.setSubscribtionCategory((TextView)convertView.findViewById(R.id.subscritionCategory));
+        viewHolder.setSubscribtionId(convertView.findViewById(R.id.subscritionId));
+        viewHolder.setSubscribtionName(convertView.findViewById(R.id.subscritionName));
+        viewHolder.setSubscribtionCategory(convertView.findViewById(R.id.subscritionCategory));
         viewHolder.getSubscribtionId().setText(item.getEventId().toString());
         viewHolder.getSubscribtionName().setText(item.getName());
         viewHolder.getSubscribtionCategory().setText(item.getEventCategory().getName());

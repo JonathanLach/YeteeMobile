@@ -9,7 +9,6 @@ import com.android.yetee.yeteemobile.constants.SharedPreferencesConstants;
 import com.android.yetee.yeteemobile.contract.EventSubscribtionsContract;
 import com.android.yetee.yeteemobile.model.Event;
 import com.android.yetee.yeteemobile.model.IdFilter;
-import com.android.yetee.yeteemobile.util.AsyncCallbackOneParam;
 import com.android.yetee.yeteemobile.util.AsyncCallbackTwoParam;
 import com.android.yetee.yeteemobile.util.NotificationUtil;
 import com.android.yetee.yeteemobile.util.ServiceResultState;

@@ -10,9 +10,6 @@ public class EventDetailsViewHolder {
     @BindView(R.id.eventDetailsName)
     TextView eventName;
 
-    @BindView(R.id.eventDetailsId)
-    TextView eventId;
-
     @BindView(R.id.eventDetailsCategory)
     TextView eventCategory;
 
@@ -36,10 +33,6 @@ public class EventDetailsViewHolder {
 
     public void setEventName(String name) {
         eventName.setText(name);
-    }
-
-    public void setEventId(Long id) {
-        eventId.setText(String.valueOf(id));
     }
 
     public void setEventCategory(String category) {

@@ -1,10 +1,10 @@
 package com.android.yetee.yeteemobile.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.contract.RegisterContract;
@@ -29,11 +29,11 @@ public class RegisterActivity extends MainActivity implements RegisterContract.V
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
         ButterKnife.bind(viewHolder, this);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationIcon(android.R.drawable.ic_dialog_alert);
-        getSupportActionBar().setTitle("Yetee");
+        getSupportActionBar().setTitle(getString(R.string.title_register));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -55,7 +55,16 @@ public class RegisterActivity extends MainActivity implements RegisterContract.V
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+
+        return false;
     }
 }

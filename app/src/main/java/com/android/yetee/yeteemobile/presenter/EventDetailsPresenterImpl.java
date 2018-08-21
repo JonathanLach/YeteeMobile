@@ -44,7 +44,6 @@ public class EventDetailsPresenterImpl implements EventDetailsContract.Presenter
                     NotificationUtil.notifyCommonErrorDialog(view, statusCode);
                 }
                 else {
-                    viewHolder.setEventId(event.getEventId());
                     viewHolder.setEventAddress(event.getAddress());
                     viewHolder.setEventCategory(event.getEventCategory().getName());
                     viewHolder.setEventCity(event.getCity());

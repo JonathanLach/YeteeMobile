@@ -1,6 +1,5 @@
 package com.android.yetee.yeteemobile.module;
 
-import com.android.yetee.yeteemobile.activity.EventsListActivity;
 import com.android.yetee.yeteemobile.contract.EventsListContract;
 import com.android.yetee.yeteemobile.fragment.EventsListFragment;
 import com.android.yetee.yeteemobile.presenter.EventsListPresenterImpl;

@@ -1,7 +1,5 @@
 package com.android.yetee.yeteemobile.util;
 
-import android.content.res.Resources;
-
 import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.app.YeteeApplication;
 
@@ -16,6 +14,7 @@ public enum VerificationErrorCodes {
     CITY_EMPTY(YeteeApplication.getYeteeContext().getString(R.string.error_empty_city)),
     PASSWORDS_NOT_MATCH(YeteeApplication.getYeteeContext().getString(R.string.error_passwords_not_match)),
     ZIP_EMPTY(YeteeApplication.getYeteeContext().getString(R.string.error_empty_zip)),
+    ZIP_NOT_4_DIGITS(YeteeApplication.getYeteeContext().getString(R.string.error_zip_not_4_digits)),
     BIRTHDATE_FUTURE(YeteeApplication.getYeteeContext().getString(R.string.error_birthdate_future));
 
     private String value;

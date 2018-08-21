@@ -1,13 +1,8 @@
 package com.android.yetee.yeteemobile.activity;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,16 +10,12 @@ import android.widget.Toast;
 
 import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.contract.MainContract;
-import com.android.yetee.yeteemobile.presenter.MainPresenterImpl;
 
-import javax.inject.Inject;
-
-import butterknife.BindView;
 import dagger.android.support.DaggerAppCompatActivity;
 
 public class MainActivity extends DaggerAppCompatActivity implements MainContract.View {
 
-    private static String ERROR_DEBUG_TAG = "DEBUG INFO";
+    private String ERROR_DEBUG_TAG = "DEBUG INFO";
     private DrawerLayout mDrawerLayout;
 
     @Override
@@ -60,6 +51,7 @@ public class MainActivity extends DaggerAppCompatActivity implements MainContrac
             case android.R.id.home:
                 onBackPressed();
                 return true;
+            case R.id.eventsListMenu:
             case R.id.eventsListMenuItem:
                 startActivity(new Intent(this, EventsListActivity.class));
                 return true;
@@ -71,7 +63,6 @@ public class MainActivity extends DaggerAppCompatActivity implements MainContrac
             case R.id.profileMenuItem:
                 startActivity(new Intent(this, ProfileActivity.class));
                 return true;
-            case R.id.subscriptionsMenu:
             case R.id.subscriptionsMenuItem:
                 startActivity(new Intent(this, EventSubscribtionsActivity.class));
                 return true;

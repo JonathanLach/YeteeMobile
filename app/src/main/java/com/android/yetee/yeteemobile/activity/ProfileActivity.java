@@ -2,10 +2,8 @@ package com.android.yetee.yeteemobile.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 
 import com.android.yetee.yeteemobile.R;
-import com.android.yetee.yeteemobile.contract.MainContract;
 import com.android.yetee.yeteemobile.contract.ProfileContract;
 import com.android.yetee.yeteemobile.viewHolder.ProfileViewHolder;
 
@@ -27,11 +25,11 @@ public class ProfileActivity extends MainActivity implements ProfileContract.Vie
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
         ButterKnife.bind(viewHolder, this);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationIcon(android.R.drawable.ic_dialog_alert);
-        getSupportActionBar().setTitle("Yetee");
+        getSupportActionBar().setTitle(getString(R.string.title_profile));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         presenter.getProfile(getApplicationContext());
 
@@ -40,10 +38,5 @@ public class ProfileActivity extends MainActivity implements ProfileContract.Vie
     @Override
     public ProfileViewHolder getViewHolder() {
         return viewHolder;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
     }
 }

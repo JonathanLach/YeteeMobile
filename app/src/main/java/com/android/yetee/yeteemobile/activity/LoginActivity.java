@@ -38,12 +38,13 @@ public class LoginActivity extends MainActivity implements LoginContract.View {
         }
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        ButterKnife.bind(loginPresenter, this);
         ButterKnife.bind(loginViewHolder, this);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationIcon(android.R.drawable.ic_dialog_alert);
-        getSupportActionBar().setTitle("Yetee");
+        getSupportActionBar().setTitle(getString(R.string.title_login));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -55,6 +56,11 @@ public class LoginActivity extends MainActivity implements LoginContract.View {
 
     @Override
     @OnClick(R.id.signup)
+    public void onClickRegisterButton() {
+        loginPresenter.setRegisterView();
+    }
+
+    @Override
     public void setRegisterView() {
         startActivity(new Intent(this, RegisterActivity.class));
     }
@@ -72,6 +78,6 @@ public class LoginActivity extends MainActivity implements LoginContract.View {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        return false;
     }
 }

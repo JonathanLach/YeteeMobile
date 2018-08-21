@@ -32,7 +32,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <EditText
@@ -113,7 +113,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="30dp"
                     android:hint="@string/hint_ZIP_register"
-                    android:inputType="text" />
+                    android:inputType="numberSigned" />
 
 
                 <EditText

@@ -3,6 +3,7 @@ package com.android.yetee.yeteemobile.presenter;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.app.YeteeApplication;
 import com.android.yetee.yeteemobile.business.UserManager;
 import com.android.yetee.yeteemobile.constants.SharedPreferencesConstants;
@@ -13,6 +14,8 @@ import com.android.yetee.yeteemobile.util.ServiceResultState;
 import com.android.yetee.yeteemobile.viewHolder.LoginViewHolder;
 
 import javax.inject.Inject;
+
+import butterknife.OnClick;
 
 public class LoginPresenterImpl implements LoginContract.Presenter {
 
@@ -25,6 +28,11 @@ public class LoginPresenterImpl implements LoginContract.Presenter {
         this.view = view;
         this.userManager = userManager;
         this.loginViewHolder = loginViewHolder;
+    }
+
+    @Override
+    public void setRegisterView() {
+        view.setRegisterView();
     }
 
     @Override

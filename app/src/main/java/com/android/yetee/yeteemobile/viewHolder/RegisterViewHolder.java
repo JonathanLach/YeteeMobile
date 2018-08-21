@@ -4,7 +4,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.android.yetee.yeteemobile.R;
-import com.android.yetee.yeteemobile.contract.RegisterContract;
 
 import java.util.Date;
 

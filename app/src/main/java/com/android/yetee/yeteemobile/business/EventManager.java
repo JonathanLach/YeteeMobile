@@ -1,19 +1,12 @@
 package com.android.yetee.yeteemobile.business;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
-import com.android.yetee.yeteemobile.constants.SharedPreferencesConstants;
 import com.android.yetee.yeteemobile.dataAccess.EventDAO;
 import com.android.yetee.yeteemobile.model.Event;
 import com.android.yetee.yeteemobile.model.IdFilter;
-import com.android.yetee.yeteemobile.util.AsyncCallbackOneParam;
 import com.android.yetee.yeteemobile.util.AsyncCallbackTwoParam;
 import com.android.yetee.yeteemobile.util.ServiceResultState;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.inject.Inject;
 

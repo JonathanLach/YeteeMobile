@@ -1,6 +1,5 @@
 package com.android.yetee.yeteemobile.dataAccess.impl;
 
-import android.app.Service;
 import android.util.Log;
 
 import com.android.yetee.yeteemobile.dataAccess.ServiceCalls;
@@ -32,19 +31,24 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void login(String username, String password, final AsyncCallbackOneParam<ServiceResultState> callback) {
-        Call<User> call = service.getUserByNickname(username, password);
+        Call<User> call = service.login(username, password);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 ServiceResultState serviceResultState = ServiceResultState.UNKNOWN_ERROR;
-                if (response.code() == HttpURLConnection.HTTP_OK) {
-                    serviceResultState = ServiceResultState.OK;
-                } else if (response.code() == HttpURLConnection.HTTP_NOT_FOUND) {
-                    serviceResultState = ServiceResultState.NOT_FOUND;
-                } else if (response.code() == HttpURLConnection.HTTP_CONFLICT) {
-                    serviceResultState = ServiceResultState.PASSWORD_NOT_MATCH;
-                } else if (response.code() == HttpURLConnection.HTTP_INTERNAL_ERROR) {
-                    serviceResultState = ServiceResultState.SERVICE_INTERNAL_ERROR;
+                switch (response.code()) {
+                    case HttpURLConnection.HTTP_OK:
+                        serviceResultState = ServiceResultState.OK;
+                        break;
+                    case HttpURLConnection.HTTP_NOT_FOUND:
+                        serviceResultState = ServiceResultState.NOT_FOUND;
+                        break;
+                    case HttpURLConnection.HTTP_CONFLICT:
+                        serviceResultState = ServiceResultState.PASSWORD_NOT_MATCH;
+                        break;
+                    case HttpURLConnection.HTTP_INTERNAL_ERROR:
+                        serviceResultState = ServiceResultState.SERVICE_INTERNAL_ERROR;
+                        break;
                 }
                 try {
                     callback.apply(serviceResultState);
@@ -79,7 +83,7 @@ public class UserDAOImpl implements UserDAO {
 
             @Override
             public void onFailure(Call<Token> call, Throwable t) {
-                Log.e("ERROR", "ERROR");
+                Log.e("Error with token", "Service is down");
             }
         });
     }
@@ -103,7 +107,11 @@ public class UserDAOImpl implements UserDAO {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("ERROR", "ERROR");
+                try {
+                    callback.apply(ConnectionChecker.checkConnectivity(t));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -114,7 +122,14 @@ public class UserDAOImpl implements UserDAO {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                callback.apply(response.body(), ServiceResultState.OK);
+                if(response.code() == HttpURLConnection.HTTP_OK) {
+                    callback.apply(response.body(), ServiceResultState.OK);
+                }
+                else {
+                    if(response.code() == HttpURLConnection.HTTP_NOT_FOUND) {
+                        callback.apply(null, ServiceResultState.NOT_FOUND);
+                    }
+                }
             }
 
             @Override

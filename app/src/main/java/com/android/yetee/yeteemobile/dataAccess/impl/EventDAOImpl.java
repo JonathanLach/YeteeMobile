@@ -1,7 +1,5 @@
 package com.android.yetee.yeteemobile.dataAccess.impl;
 
-import android.app.Service;
-
 import com.android.yetee.yeteemobile.dataAccess.EventDAO;
 import com.android.yetee.yeteemobile.dataAccess.ServiceCalls;
 import com.android.yetee.yeteemobile.model.Event;
@@ -10,6 +8,7 @@ import com.android.yetee.yeteemobile.util.AsyncCallbackTwoParam;
 import com.android.yetee.yeteemobile.util.ConnectionChecker;
 import com.android.yetee.yeteemobile.util.ServiceResultState;
 
+import java.net.HttpURLConnection;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,7 +32,15 @@ public class EventDAOImpl implements EventDAO {
         call.enqueue(new Callback<Event>() {
             @Override
             public void onResponse(Call<Event> call, Response<Event> response) {
-                callback.apply(response.body(), ServiceResultState.OK);
+                if(response.code() == HttpURLConnection.HTTP_OK) {
+                    callback.apply(response.body(), ServiceResultState.OK);
+                }
+                else {
+                    if(response.code() == HttpURLConnection.HTTP_NOT_FOUND) {
+                        callback.apply(null, ServiceResultState.NOT_FOUND);
+                    }
+                }
+
             }
 
             @Override

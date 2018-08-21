@@ -18,8 +18,8 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ServiceCalls {
-    @GET("users/username/{username}")
-    Call<User> getUserByNickname(@Path("username")String username, @Header("password")String password);
+    @GET("users/login/{username}")
+    Call<User> login(@Path("username")String username, @Header("password")String password);
 
     @GET("pointsOfInterest")
     Call<List<PointOfInterest>> getAllPointsOfInterest();

@@ -4,6 +4,7 @@ import com.android.yetee.yeteemobile.activity.EventMapActivity;
 import com.android.yetee.yeteemobile.activity.EventSubscribtionsActivity;
 import com.android.yetee.yeteemobile.activity.EventsListActivity;
 import com.android.yetee.yeteemobile.activity.LoginActivity;
+import com.android.yetee.yeteemobile.activity.MainActivity;
 import com.android.yetee.yeteemobile.activity.PointsOfInterestActivity;
 import com.android.yetee.yeteemobile.activity.ProfileActivity;
 import com.android.yetee.yeteemobile.activity.RegisterActivity;

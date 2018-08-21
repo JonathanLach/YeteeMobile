@@ -9,14 +9,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.constants.FragmentTagsConstants;
 import com.android.yetee.yeteemobile.constants.IntentConstants;
 import com.android.yetee.yeteemobile.contract.EventsListContract;
-import com.android.yetee.yeteemobile.model.Event;
 import com.android.yetee.yeteemobile.viewHolder.EventsListViewHolder;
 
 import javax.inject.Inject;
@@ -50,14 +48,15 @@ public class EventsListFragment extends MainFragment implements EventsListContra
         ButterKnife.bind(viewHolder, getView());
         viewHolder.setContext(view.getContext());
         presenter.getAllEvents();
-        ListView listView = (ListView)getView().findViewById(R.id.eventsList);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Event event = (Event)listView.getAdapter().getItem(position);
-                showEventDetailsFragment(event.getEventId());
-            }
+        ListView listView = getView().findViewById(R.id.eventsList);
+        listView.setOnItemClickListener((parent, view1, position, id) -> {
+            presenter.setDetailsView(position);
         });
+    }
+
+    @Override
+    public void setDetailsView(Long id) {
+        showEventDetailsFragment(id);
     }
 
     @Override
@@ -77,7 +76,7 @@ public class EventsListFragment extends MainFragment implements EventsListContra
             Bundle bundle = new Bundle();
             bundle.putLong(IntentConstants.EVENT_ID, id);
             eventDetailsFragment.setArguments(bundle);
-            if(!getResources().getBoolean(R.bool.isTablet)) {
+            if(!getResources().getBoolean(R.bool.isTablet) && !getResources().getBoolean(R.bool.isLandscape)) {
                 fTransaction.replace(R.id.eventsListPane, eventDetailsFragment);
             }
             else {

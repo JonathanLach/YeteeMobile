@@ -25,6 +25,12 @@ public class EventsListPresenterImpl implements EventsListContract.Presenter {
         this.viewHolder = eventsListViewHolder;
     }
 
+
+    @Override
+    public void setDetailsView(int position) {
+        view.setDetailsView(viewHolder.getAdapter().getItem(position).getEventId());
+    }
+
     @Override
     public void getAllEvents() {
         AsyncCallbackTwoParam<List<Event>, ServiceResultState> callback = (events, statusCode) -> {

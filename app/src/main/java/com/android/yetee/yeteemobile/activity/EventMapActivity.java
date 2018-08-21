@@ -2,20 +2,14 @@ package com.android.yetee.yeteemobile.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.contract.EventMapContract;
@@ -24,18 +18,12 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.GeoDataClient;
-import com.google.android.gms.location.places.PlaceDetectionClient;
-import com.google.android.gms.location.places.Places;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import javax.inject.Inject;
@@ -69,10 +57,10 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_map);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Yetee");
+        getSupportActionBar().setTitle(getString(R.string.title_event_map));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -87,7 +75,7 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
                 for (Location location : locationResult.getLocations()) {
                     lastKnownLocation = location;
                 }
-            };
+            }
         };
         mLocationRequest = LocationRequest.create();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -159,30 +147,23 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
     }
 
     private void getDeviceLocation() {
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
         try {
             if (locationPermissionGranted) {
                 Task locationResult = fusedLocationClient.getLastLocation();
-                locationResult.addOnCompleteListener(this, new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
-                            lastKnownLocation = (Location) task.getResult();
-                            if(lastKnownLocation != null) {
-                                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(lastKnownLocation.getLatitude(),
-                                                lastKnownLocation.getLongitude()), 12));
-                            }
-                            else {
-                                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(50.525707, 4.062102), 12));
-                            }
-                        } else {
-                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12));
-                            googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+                locationResult.addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        lastKnownLocation = (Location) task.getResult();
+                        if(lastKnownLocation != null) {
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                    new LatLng(lastKnownLocation.getLatitude(),
+                                            lastKnownLocation.getLongitude()), 12));
                         }
+                        else {
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(50.525707, 4.062102), 12));
+                        }
+                    } else {
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12));
+                        googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });
             }
@@ -201,7 +182,7 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
         googleMap.setBuildingsEnabled(true);
         updateLocationUI();
         getDeviceLocation();
-        presenter.getAllPointsOfInterest();
+        presenter.getEventLocations();
     }
 
 }

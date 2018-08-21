@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,77 +31,110 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:text="@string/label_username"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+
+                <TextView
                     android:id="@+id/profileUsername"
                     android:layout_width="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/label_userFirstName"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/profileFirstName"
                     android:layout_width="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/label_userLastName"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/profileLastName"
                     android:layout_width="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/label_userAddress"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/profileAddress"
                     android:layout_width="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/label_userZIP"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/profileZIP"
                     android:layout_width="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/label_userCity"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/profileCity"
                     android:layout_width="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/label_iban"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/profileIban"
                     android:layout_width="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="30sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/eventDetailsDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/eventDetailsTicketPrice"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/eventDetailsAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/eventDetailsZIP"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/eventDetailsCity"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
             </LinearLayout>
         </ScrollView>
 

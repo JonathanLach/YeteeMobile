@@ -3,7 +3,6 @@ package com.android.yetee.yeteemobile.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.transition.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,7 @@ import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.activity.PointsOfInterestActivity;
 import com.android.yetee.yeteemobile.constants.IntentConstants;
 import com.android.yetee.yeteemobile.contract.EventDetailsContract;
-import com.android.yetee.yeteemobile.contract.EventsListContract;
 import com.android.yetee.yeteemobile.viewHolder.EventDetailsViewHolder;
-import com.android.yetee.yeteemobile.viewHolder.EventsListViewHolder;
 
 import javax.inject.Inject;
 
@@ -46,12 +43,15 @@ public class EventDetailsFragment extends MainFragment implements EventDetailsCo
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(getView());
         ButterKnife.bind(viewHolder, getView());
+        ButterKnife.bind(presenter, getView());
         if (getArguments() != null) {
             presenter.getEventDetails(getArguments().getLong(IntentConstants.EVENT_ID));
             getView().findViewById(R.id.registrationEvent).setVisibility(VISIBLE);
+            getView().findViewById(R.id.seePointsOfInterest).setVisibility(VISIBLE);
         }
         else {
             getView().findViewById(R.id.registrationEvent).setVisibility(INVISIBLE);
+            getView().findViewById(R.id.seePointsOfInterest).setVisibility(INVISIBLE);
         }
     }
 
@@ -81,7 +81,6 @@ public class EventDetailsFragment extends MainFragment implements EventDetailsCo
     }
 
     @Override
-    @OnClick(R.id.seePointsOfInterest)
     public void setPointsOfInterest() {
         Intent intent = new Intent(getContext(), PointsOfInterestActivity.class);
         intent.putExtra("EVENT_ID", getArguments().getLong(IntentConstants.EVENT_ID));

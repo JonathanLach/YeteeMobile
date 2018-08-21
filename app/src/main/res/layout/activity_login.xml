@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="132dp"
+        tools:ignore="MissingConstraints">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:minHeight="?attr/actionBarSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
-        </android.support.v7.widget.Toolbar>
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
 
         <TextView
             android:id="@+id/loginLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
             android:text="@string/label_username" />
 
         <EditText
@@ -30,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="15dp"
             android:hint="@string/hint_username"
             android:inputType="text" />
 
@@ -39,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
             android:text="@string/label_password" />
 
         <EditText
@@ -46,25 +52,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="15dp"
             android:hint="@string/hint_password"
             android:inputType="textPassword" />
 
         <Button
             android:id="@+id/login"
+            style="@style/CustomButton"
             android:layout_width="212dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            style="@style/CustomButton"
             android:text="@string/button_login" />
 
         <Button
             android:id="@+id/signup"
+            style="@style/CustomButton"
             android:layout_width="212dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
             android:text="@string/button_signup"
-            style="@style/CustomButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

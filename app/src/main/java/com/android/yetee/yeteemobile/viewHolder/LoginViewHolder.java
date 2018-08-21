@@ -4,11 +4,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.yetee.yeteemobile.R;
-import com.android.yetee.yeteemobile.contract.LoginContract;
 import com.android.yetee.yeteemobile.util.UITypeConverter;
 
 import butterknife.BindView;
-import dagger.Provides;
 
 public class LoginViewHolder {
 

@@ -1,7 +1,5 @@
 package com.android.yetee.yeteemobile.business;
 
-import android.app.Service;
-
 import com.android.yetee.yeteemobile.dataAccess.UserDAO;
 import com.android.yetee.yeteemobile.model.User;
 import com.android.yetee.yeteemobile.util.AsyncCallbackOneParam;

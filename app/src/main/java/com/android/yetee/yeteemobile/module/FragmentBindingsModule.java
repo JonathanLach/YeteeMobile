@@ -18,6 +18,4 @@ public abstract class FragmentBindingsModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = EventDetailsFragmentModule.class)
     abstract EventDetailsFragment eventDetailsInjector();
-
-
 }

@@ -1,5 +1,6 @@
 package com.android.yetee.yeteemobile.presenter;
 
+import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.business.UserManager;
 import com.android.yetee.yeteemobile.contract.RegisterContract;
 import com.android.yetee.yeteemobile.model.User;
@@ -15,6 +16,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.OnClick;
+
 public class RegisterPresenterImpl implements RegisterContract.Presenter {
 
     private RegisterContract.View view;
@@ -28,6 +31,7 @@ public class RegisterPresenterImpl implements RegisterContract.Presenter {
         this.viewHolder = viewHolder;
     }
 
+    @OnClick(R.id.registerButton)
     public void register() {
         List<VerificationErrorCodes> errorCodes = verificationRegisterInputs();
         if(errorCodes.size() > 0) {
@@ -70,11 +74,16 @@ public class RegisterPresenterImpl implements RegisterContract.Presenter {
         if (viewHolder.getFirstName() == null || viewHolder.getFirstName().isEmpty()) {
             errorCodes.add(VerificationErrorCodes.FIRST_NAME_EMPTY);
         }
-        if (viewHolder.getTelNumber() == null || viewHolder.getIbanAccount().isEmpty()) {
+        if (viewHolder.getTelNumber() == null || viewHolder.getTelNumber().isEmpty()) {
             errorCodes.add(VerificationErrorCodes.TEL_NUMBER_EMPTY);
         }
         if (viewHolder.getZip() == null || viewHolder.getZip().isEmpty()) {
             errorCodes.add(VerificationErrorCodes.ZIP_EMPTY);
+        }
+        else {
+            if(viewHolder.getZip().length() != 4) {
+                errorCodes.add(VerificationErrorCodes.ZIP_NOT_4_DIGITS);
+            }
         }
         if (viewHolder.getUsername() == null || viewHolder.getUsername().isEmpty()) {
             errorCodes.add(VerificationErrorCodes.USERNAME_EMPTY);
