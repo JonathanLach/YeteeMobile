@@ -4,6 +4,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.android.yetee.yeteemobile.R;
+import com.android.yetee.yeteemobile.viewElement.CustomDatePicker;
 
 import java.util.Date;
 
@@ -41,7 +42,7 @@ public class RegisterViewHolder {
     EditText ibanAccount;
 
     @BindView(R.id.birthDate)
-    DatePicker birthDate;
+    CustomDatePicker birthDate;
 
     public Date getBirthDate() {
         return new Date(birthDate.getYear() - 1900, birthDate.getMonth(), birthDate.getDayOfMonth());

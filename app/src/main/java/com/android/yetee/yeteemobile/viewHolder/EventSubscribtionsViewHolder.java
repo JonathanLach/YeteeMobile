@@ -17,7 +17,7 @@ public class EventSubscribtionsViewHolder {
     @BindView(R.id.eventsSubscription)
     ListView eventSubscriptions;
 
-    TextView subscribtionId;
+    TextView subscribtionDate;
 
     TextView subscribtionName;
 
@@ -45,12 +45,12 @@ public class EventSubscribtionsViewHolder {
         this.eventSubscriptions = eventSubscriptions;
     }
 
-    public TextView getSubscribtionId() {
-        return subscribtionId;
+    public TextView getSubscribtionDate() {
+        return subscribtionDate;
     }
 
-    public void setSubscribtionId(TextView subscribtionId) {
-        this.subscribtionId = subscribtionId;
+    public void setSubscribtionDate(TextView subscribtionDate) {
+        this.subscribtionDate = subscribtionDate;
     }
 
     public TextView getSubscribtionName() {

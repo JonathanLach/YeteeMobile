@@ -17,7 +17,7 @@ public class EventsListViewHolder {
     @BindView(R.id.eventsList)
     ListView eventsList;
 
-    TextView eventId;
+    TextView eventDate;
 
     TextView eventName;
 
@@ -36,20 +36,20 @@ public class EventsListViewHolder {
         this.context = context;
     }
 
-    public TextView getEventId() {
-        return eventId;
-    }
-
     public TextView getEventName() {
         return eventName;
+    }
+
+    public TextView getEventDate() {
+        return eventDate;
     }
 
     public TextView getEventCategory() {
         return eventCategory;
     }
 
-    public void setEventId(TextView eventId) {
-        this.eventId = eventId;
+    public void setEventDate(TextView eventDate) {
+        this.eventDate = eventDate;
     }
 
     public void setEventName(TextView eventName) {

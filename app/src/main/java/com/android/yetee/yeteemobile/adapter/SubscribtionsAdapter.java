@@ -10,6 +10,8 @@ import com.android.yetee.yeteemobile.R;
 import com.android.yetee.yeteemobile.model.Event;
 import com.android.yetee.yeteemobile.viewHolder.EventSubscribtionsViewHolder;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class SubscribtionsAdapter extends ArrayAdapter<Event> {
@@ -31,11 +33,11 @@ public class SubscribtionsAdapter extends ArrayAdapter<Event> {
         } else {
             viewHolder = (EventSubscribtionsViewHolder)convertView.getTag();
         }
-
-        viewHolder.setSubscribtionId(convertView.findViewById(R.id.subscritionId));
-        viewHolder.setSubscribtionName(convertView.findViewById(R.id.subscritionName));
-        viewHolder.setSubscribtionCategory(convertView.findViewById(R.id.subscritionCategory));
-        viewHolder.getSubscribtionId().setText(item.getEventId().toString());
+        viewHolder.setSubscribtionDate(convertView.findViewById(R.id.subscribtionDate));
+        viewHolder.setSubscribtionName(convertView.findViewById(R.id.subscribtionName));
+        viewHolder.setSubscribtionCategory(convertView.findViewById(R.id.subscribtionCategory));
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        viewHolder.getSubscribtionDate().setText(df.format(item.getEventDate()));
         viewHolder.getSubscribtionName().setText(item.getName());
         viewHolder.getSubscribtionCategory().setText(item.getEventCategory().getName());
 
