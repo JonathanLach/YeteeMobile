@@ -38,7 +38,6 @@ public class PointsOfInterestActivity extends MainActivity implements PointsOfIn
     private GoogleMap googleMap;
     private boolean locationPermissionGranted = false;
     private Location lastKnownLocation;
-    private LatLng defaultLocation;
     private LocationCallback mLocationCallback;
     private LocationRequest mLocationRequest;
 
@@ -162,13 +161,14 @@ public class PointsOfInterestActivity extends MainActivity implements PointsOfIn
                         if(lastKnownLocation != null) {
                             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(lastKnownLocation.getLatitude(),
-                                            lastKnownLocation.getLongitude()), GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
+                                            lastKnownLocation.getLongitude(
+                                            )), GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
                         }
                         else {
                             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(GeoLocationConstants.DEFAULT_LATITUDE, GeoLocationConstants.DEFAULT_LONGITUDE), GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
                         }
                     } else {
-                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(GeoLocationConstants.DEFAULT_LATITUDE, GeoLocationConstants.DEFAULT_LONGITUDE), GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
                         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });

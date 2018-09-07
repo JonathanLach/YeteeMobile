@@ -37,7 +37,6 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
     private GoogleMap googleMap;
     private boolean locationPermissionGranted = false;
     private Location lastKnownLocation;
-    private LatLng defaultLocation;
     private LocationCallback mLocationCallback;
     private LocationRequest mLocationRequest;
 
@@ -163,7 +162,7 @@ public class EventMapActivity extends MainActivity implements EventMapContract.V
                             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(GeoLocationConstants.DEFAULT_LATITUDE, GeoLocationConstants.DEFAULT_LONGITUDE), GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
                         }
                     } else {
-                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(GeoLocationConstants.DEFAULT_LATITUDE, GeoLocationConstants.DEFAULT_LONGITUDE), GeoLocationConstants.DEFAULT_ZOOM_LEVEL));
                         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });
